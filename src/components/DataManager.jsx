@@ -618,7 +618,7 @@ function SubjectsColorTab({ teachers, gradeCode, roomCount, customColors, onUpda
 // ══ Tab: Fix Slots ══════════════════════════════════════════════
 function FixedTab({ fixedSlots, onUpdate }) {
   const [slots, setSlots] = useState(fixedSlots)
-  const [form, setForm]   = useState({subjectName:'ลูกเสือ',subjectCode:'SCOUT',day:'พุธ',period:5})
+  const [form, setForm]   = useState({subjectName:'ลูกเสือ',subjectCode:`SCOUT${Math.random()}`,day:'พุธ',period:5})
   const [err, setErr]     = useState('')
   const [saved, setSaved] = useState(false)
 

@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from 'react'
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import TimetableGrid from './components/TimetableGrid.jsx'
 import DataManager from './components/DataManager.jsx'
 import ManualEditor from './components/ManualEditor.jsx'
@@ -88,7 +88,7 @@ export default function App() {
   function onUpdate(action) {
     if (action.type==='rooms')       { setGradeField({ roomCount: action.roomCount }); setDone(false) }
     if (action.type==='teachers')    { setGradeField({ teachers: action.teachers });   setDone(false) }
-    if (action.type==='fixed')       { setGradeField({ fixed: action.fixedSlots });    setDone(false) }
+    if (action.type==='fixed')       { console.log('onUpdate : fixed: action.fixedSlots', action.fixedSlots); setGradeField({ fixed: action.fixedSlots });    setDone(false) }
     if (action.type==='colors')      { setGradeField({ colors: action.colors }) }
     if (action.type==='prelocks')    { setGradeField({ preLocks: action.preLocks }) }
     if (action.type==='unavailable') { setGradeField({ teacherUnavailable: action.teacherUnavailable }) }
@@ -236,6 +236,18 @@ export default function App() {
     },{}),
   })),[teachers])
 
+  useEffect(() => {
+    console.log('teachers', teachers)
+  }, [teachers])
+
+  useEffect(() => {
+    console.log('subjects', subjects)
+  }, [subjects])
+
+  useEffect(() => {
+    console.log('gradeStore', gradeStore)
+  }, [gradeStore])
+
   // room summary — depend on gradeStore เพื่อให้ re-compute ทุกครั้งที่ข้อมูลเปลี่ยน
   const roomSum = useMemo(()=>{
     if (!grade) return []
@@ -258,6 +270,7 @@ export default function App() {
       const total=Object.values(subjMap).reduce((s,v)=>s+v.periods,0)
       const dayMap = _roomPeriods[rid] || {}
       const maxP = DAYS.reduce((s,d) => s + (dayMap[d] ?? 5), 0)
+      console.log('subjMap', subjMap)
       return {rid, subjects:Object.values(subjMap), total, maxP}
     })
   },[grade, gradeStore])
