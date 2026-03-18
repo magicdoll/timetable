@@ -236,18 +236,6 @@ export default function App() {
     },{}),
   })),[teachers])
 
-  useEffect(() => {
-    console.log('teachers', teachers)
-  }, [teachers])
-
-  useEffect(() => {
-    console.log('subjects', subjects)
-  }, [subjects])
-
-  useEffect(() => {
-    console.log('gradeStore', gradeStore)
-  }, [gradeStore])
-
   // room summary — depend on gradeStore เพื่อให้ re-compute ทุกครั้งที่ข้อมูลเปลี่ยน
   const roomSum = useMemo(()=>{
     if (!grade) return []

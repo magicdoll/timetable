@@ -81,6 +81,8 @@ function parseSubjectsSheet(ws) {
     const code = cellStr(row.getCell(1))
     if (!code) return
     if (SUBJ_HDR.some(w => code.toLowerCase().includes(w))) return  // skip header
+    if (code.toLowerCase().indexOf('hex') != -1) return
+
     const name   = cellStr(row.getCell(2))
     const bg     = cellStr(row.getCell(3)) || '#F5F5F5'
     const border = cellStr(row.getCell(4)) || '#BDBDBD'
