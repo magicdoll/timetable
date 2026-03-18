@@ -489,7 +489,7 @@ function SubjectsColorTab({ teachers, gradeCode, roomCount, customColors, onUpda
     const name = newName.trim()
     if (!code) { setAddErr('กรุณากรอกรหัสวิชา'); return }
     if (!name) { setAddErr('กรุณากรอกชื่อวิชา');  return }
-    if (!/^[A-Z0-9_]+$/.test(code)) { setAddErr('รหัสวิชาใช้ได้เฉพาะ A-Z 0-9 _'); return }
+    if (!/^[A-Z0-9_ก-๙]+$/.test(code)) { setAddErr('รหัสวิชาใช้ได้เฉพาะ A-Z 0-9 _ และภาษาไทย'); return }
     if (colors[code]) { setAddErr(`รหัส ${code} มีอยู่แล้ว`); return }
     const newColors = { ...colors, [code]: { bg: newBg, border: newBd, text: newTx, label: name } }
     setColors(newColors)
@@ -531,7 +531,7 @@ function SubjectsColorTab({ teachers, gradeCode, roomCount, customColors, onUpda
       <div className="table-responsive mb-2">
         <table className="table table-sm table-bordered" style={{ fontSize: '0.79rem' }}>
           <thead style={{ background: '#f0f4f8' }}>
-            <tr><th>รหัส</th><th>ชื่อวิชา</th><th>ห้องที่สอน</th><th style={{minWidth:70}}>พื้นหลัง</th><th style={{minWidth:70}}>ขอบ</th><th style={{minWidth:60}}>Preview</th><th></th></tr>
+            <tr><th>รหัส</th><th>ชื่อวิชา</th><th>ห้องที่ไม่สอน</th><th style={{minWidth:70}}>พื้นหลัง</th><th style={{minWidth:70}}>ขอบ</th><th style={{minWidth:60}}>Preview</th><th></th></tr>
           </thead>
           <tbody>
             {allSubjCodes.map(code => {
@@ -618,7 +618,7 @@ function SubjectsColorTab({ teachers, gradeCode, roomCount, customColors, onUpda
 // ══ Tab: Fix Slots ══════════════════════════════════════════════
 function FixedTab({ fixedSlots, onUpdate }) {
   const [slots, setSlots] = useState(fixedSlots)
-  const [form, setForm]   = useState({subjectName:'ลูกเสือ',subjectCode:`SCOUT${Math.random()}`,day:'พุธ',period:5})
+  const [form, setForm]   = useState({subjectName:'ลูกเสือ',subjectCode:`FIX${Math.random()}`,day:'พุธ',period:5})
   const [err, setErr]     = useState('')
   const [saved, setSaved] = useState(false)
 

@@ -3,7 +3,9 @@
  * แก้ไขสีได้จาก DataManager → Tab "สรุปวิชา"
  */
 
-export const DEFAULT_SUBJECT_COLORS = {
+export const DEFAULT_SUBJECT_COLORS = {}
+/*
+{
   TH:    { bg: '#FFF9C4', border: '#F9A825', text: '#5D4037', label: 'ภาษาไทย' },
   MA:    { bg: '#E3F2FD', border: '#1976D2', text: '#0D47A1', label: 'คณิตศาสตร์' },
   SC:    { bg: '#E8F5E9', border: '#388E3C', text: '#1B5E20', label: 'วิทยาศาสตร์' },
@@ -18,6 +20,7 @@ export const DEFAULT_SUBJECT_COLORS = {
   FREE:  { bg: '#F5F5F5', border: '#BDBDBD', text: '#9E9E9E', label: 'ว่าง' },
   BUSY:  { bg: '#FFF3E0', border: '#E65100', text: '#BF360C', label: 'ไม่ว่าง' },
 }
+*/
 
 // คืน style object สำหรับใส่ใน slot
 export function getSubjectStyle(subjectCode, customColors = {}) {
